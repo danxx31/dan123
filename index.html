@@ -6,17 +6,22 @@
 
 <!-- Microsoft Clarity Tracking Code -->
 <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wcmqgxxwxt");
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "vx2qcslibz");
 </script>
 
 <style>
 body {
     font-family: Arial;
     text-align: center;
+    background-color: #fff0f5;
+}
+
+h1 {
+    color: #d63384;
 }
 
 .product, .cart {
@@ -26,8 +31,84 @@ body {
     width: 250px;
     display: inline-block;
     vertical-align: top;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #d63384;
 }
 </style>
 
 </head>
 <body>
+
+<h1>Dough re mi 🍰</h1>
+
+<!-- Products -->
+<div class="product">
+    <h3>Chocolate Cake</h3>
+    <p>Price: ₹500</p>
+    <button onclick="addToCart('Chocolate Cake', 500)">Add to Cart</button>
+</div>
+
+<div class="product">
+    <h3>Vanilla Cake</h3>
+    <p>Price: ₹400</p>
+    <button onclick="addToCart('Vanilla Cake', 400)">Add to Cart</button>
+</div>
+
+<div class="product">
+    <h3>Red Velvet Cake</h3>
+    <p>Price: ₹600</p>
+    <button onclick="addToCart('Red Velvet Cake', 600)">Add to Cart</button>
+</div>
+
+<!-- Cart -->
+<div class="cart">
+    <h2>Cart 🛒</h2>
+    <ul id="cart-items"></ul>
+    <p><strong>Total: ₹<span id="total">0</span></strong></p>
+    <button onclick="checkout()">Pay Now</button>
+</div>
+
+<script>
+let cart = [];
+let total = 0;
+
+function addToCart(name, price) {
+    cart.push({name, price});
+    total += price;
+
+    let list = document.getElementById("cart-items");
+    let item = document.createElement("li");
+    item.textContent = name + " - ₹" + price;
+    list.appendChild(item);
+
+    document.getElementById("total").textContent = total;
+}
+
+function checkout() {
+    if (cart.length === 0) {
+        alert("Cart is empty!");
+    } else {
+        alert("Payment Successful! 🎉 (Dummy Payment)");
+        cart = [];
+        total = 0;
+        document.getElementById("cart-items").innerHTML = "";
+        document.getElementById("total").textContent = "0";
+    }
+}
+</script>
+
+</body>
+</html>
